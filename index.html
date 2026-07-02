@@ -19,7 +19,7 @@
         
         /* Telas */
         .screen { flex: 1; overflow-y: auto; padding: 16px; display: none; }
-        .screen.active { display: block; }
+        .screen.active { display: block !important; }
         
         .badge { background-color: rgba(197, 168, 128, 0.15); color: #c5a880; padding: 4px 10px; border-radius: 6px; font-size: 8.5pt; font-weight: 600; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
         .title { font-size: 14pt; font-weight: 700; margin-bottom: 4px; color: #ffffff; }
@@ -37,7 +37,7 @@
         .tab-btn.active { background-color: #1a2630; color: #c5a880; }
         
         .view-content { display: none; }
-        .view-content.active { display: block; }
+        .view-content.active { display: block !important; }
         
         /* Box de Mídias estruturado */
         .media-box { width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #243442; margin-bottom: 14px; background-color: #1a2630; position: relative; }
@@ -64,7 +64,7 @@
             <span style="font-size: 12pt; color: #c5a880;">🔒</span>
         </header>
 
-        <main id="screen-vitrine" class="screen active">
+        <main id="screen-vitrine" class="screen active" style="display: block;">
             <div class="badge">Oportunidade Real</div>
             <h1 class="title">Ativos Disponíveis</h1>
             <p class="subtitle">São Pedro da Aldeia, RJ</p>
@@ -87,7 +87,7 @@
             </div>
         </main>
 
-        <main id="screen-details" class="screen">
+        <main id="screen-details" class="screen" style="display: none;">
             <button class="btn-back" onclick="navigateToVitrine()">⬅️ Voltar para Ativos</button>
             <h2 class="title" style="font-size: 12pt;">Condomínio Eco Resort</h2>
             
@@ -101,7 +101,7 @@
                 <button id="tab-obra" class="tab-btn" onclick="switchTab('obra')">Vídeo Obra</button>
             </div>
 
-            <div id="content-macro" class="view-content active">
+            <div id="content-macro" class="view-content active" style="display: block;">
                 <div class="media-box" style="height: 200px !important;">
                     <img src="WhatsApp%20Image%202026-07-01%20at%2020.07.52a.jpeg" alt="Mapa Macrorregional">
                 </div>
@@ -113,7 +113,7 @@
                 </a>
             </div>
 
-            <div id="content-satelite" class="view-content">
+            <div id="content-satelite" class="view-content" style="display: none;">
                 <div class="media-box" style="height: 200px !important;">
                     <img src="WhatsApp%20Image%202026-07-01%20at%2020.07.55b.jpeg" alt="Demarcação Satélite">
                 </div>
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <div id="content-obra" class="view-content">
+            <div id="content-obra" class="view-content" style="display: none;">
                 <div class="media-box" style="height: 340px !important;">
                     <video controls autoplay loop muted playsinline style="width: 100%; height: 100%;">
                         <source src="WhatsApp%20Video%202026-07-01%20at%2020.07.52.mp4" type="video/mp4">
@@ -142,32 +142,32 @@
 
     <script>
         function navigateToDetails() {
-            document.getElementById('screen-vitrine').style.display = 'none';
-            document.getElementById('screen-details').style.display = 'block';
+            document.getElementById('screen-vitrine').style.setProperty('display', 'none', 'important');
+            document.getElementById('screen-details').style.setProperty('display', 'block', 'important');
         }
 
         function navigateToVitrine() {
-            document.getElementById('screen-details').style.display = 'none';
-            document.getElementById('screen-vitrine').style.display = 'block';
+            document.getElementById('screen-details').style.setProperty('display', 'none', 'important');
+            document.getElementById('screen-vitrine').style.setProperty('display', 'block', 'important');
         }
 
         function switchTab(tabName) {
-            document.getElementById('content-macro').style.display = 'none';
-            document.getElementById('content-satelite').style.display = 'none';
-            document.getElementById('content-obra').style.display = 'none';
+            document.getElementById('content-macro').style.setProperty('display', 'none', 'important');
+            document.getElementById('content-satelite').style.setProperty('display', 'none', 'important');
+            document.getElementById('content-obra').style.setProperty('display', 'none', 'important');
             
             document.getElementById('tab-macro').classList.remove('active');
             document.getElementById('tab-satelite').classList.remove('active');
             document.getElementById('tab-obra').classList.remove('active');
             
             if (tabName === 'macro') {
-                document.getElementById('content-macro').style.display = 'block';
+                document.getElementById('content-macro').style.setProperty('display', 'block', 'important');
                 document.getElementById('tab-macro').classList.add('active');
             } else if (tabName === 'satelite') {
-                document.getElementById('content-satelite').style.display = 'block';
+                document.getElementById('content-satelite').style.setProperty('display', 'block', 'important');
                 document.getElementById('tab-satelite').classList.add('active');
             } else if (tabName === 'obra') {
-                document.getElementById('content-obra').style.display = 'block';
+                document.getElementById('content-obra').style.setProperty('display', 'block', 'important');
                 document.getElementById('tab-obra').classList.add('active');
             }
         }
