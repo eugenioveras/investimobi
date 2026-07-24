@@ -3,216 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fluxo do Empreendimento Imobiliário - SPE & Holding</title>
+    <title>Investimobi - Loteamento São Pedro da Aldeia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --investor-color: #3b82f6;
-            --spe-color: #10b981;
-            --holding-color: #8b5cf6;
-            --border: #334155;
+        .tab-btn.active {
+            border-bottom: 3px solid #2563eb;
+            color: #2563eb;
+            font-weight: 600;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            padding: 30px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .scenario-btn.active {
+            background-color: #2563eb;
+            color: white;
         }
-
-        h1 { font-size: 24px; margin-bottom: 8px; color: #ffffff; text-align: center; }
-        p.subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; text-align: center; }
-
-        .infographic-container {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-
-        .flow-row {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .row-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            font-weight: 700;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-        }
-
-        .row-investor .row-header { color: var(--investor-color); }
-        .row-spe .row-header { color: var(--spe-color); }
-        .row-holding .row-header { color: var(--holding-color); }
-
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            min-width: 900px;
-        }
-
-        .step-card {
-            flex: 1;
-            background: #0f172a;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .step-card::after {
-            content: '➔';
-            position: absolute;
-            right: -14px;
-            top: 45%;
-            color: var(--text-muted);
-            font-size: 16px;
-        }
-
-        .step-card:last-child::after { content: ''; }
-
-        .step-title { font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; color: var(--text-muted); }
-        .step-val { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
-        .step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
-
-        .row-investor .step-val { color: var(--investor-color); }
-        .row-spe .step-val { color: var(--spe-color); }
-        .row-holding .step-val { color: var(--holding-color); }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
 
-    <h1>Jornada do Empreendimento - São Pedro da Aldeia</h1>
-    <p class="subtitle">Visão sincronizada: Investidor ➔ SPE/SCP ➔ Holding Gestora (Venda Direta)</p>
-
-    <div class="infographic-container">
-
-        <!-- FLUXO SUPERIOR: INVESTIDOR -->
-        <div class="flow-row row-investor">
-            <div class="row-header">
-                👤 FLUXO DO INVESTIDOR (PESSOA FÍSICA)
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid me-2 fa-city text-blue-500 text-2xl"></i>
+                <span class="font-bold text-xl tracking-wide">Investimobi</span>
             </div>
-            <div class="steps-container">
-                <div class="step-card">
-                    <div class="step-title">1. Análise de Cotas</div>
-                    <div class="step-val">Valoração R$ 150k</div>
-                    <div class="step-desc">Avalia a oportunidade fracionada em 100 cotas proporcionais.</div>
+            <span class="text-xs bg-blue-600/30 border border-blue-400/30 text-blue-300 px-3 py-1 rounded-full">
+                São Pedro da Aldeia • RJ
+            </span>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+        
+        <!-- Cartão do Empreendimento Principal -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden mb-8">
+            <div class="p-6 md:p-8 bg-gradient-to-r from-slate-900 to-slate-800 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <div class="flex items-center gap-2 text-blue-400 font-semibold text-sm mb-1 uppercase tracking-wider">
+                        <i class="fa-solid fa-gem"></i> Oportunidade SPE SPE-01
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold">Loteamento Blue Garden Ecoville</h1>
+                    <p class="text-slate-300 text-sm mt-1">São Pedro da Aldeia • Região dos Lagos / RJ</p>
                 </div>
-                <div class="step-card">
-                    <div class="step-title">2. Aporte de Capital</div>
-                    <div class="step-val">R$ 1.500,00 / cota</div>
-                    <div class="step-desc">Adquire 1 cota correspondente a 2,16 m² do ativo imobiliário.</div>
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 flex gap-6">
+                    <div>
+                        <span class="text-xs text-slate-300 block">Valoração de Tabela</span>
+                        <span class="text-xl font-bold text-emerald-400">R$ 150.000,00</span>
+                    </div>
+                    <div class="border-l border-white/20 pl-6">
+                        <span class="text-xs text-slate-300 block">Cota de Entrada (1/100)</span>
+                        <span class="text-xl font-bold text-white">R$ 1.500,00</span>
+                    </div>
                 </div>
-                <div class="step-card">
-                    <div class="step-title">3. Maturação (3 Anos)</div>
-                    <div class="step-val">Acompanhamento</div>
-                    <div class="step-desc">Aguarda a valorização da região sem custos de manutenção direta.</div>
+            </div>
+
+            <!-- Navegação por Abas (4 Abas) -->
+            <div class="border-b border-slate-200 bg-slate-100 flex overflow-x-auto">
+                <button onclick="switchTab('tab-localizacao')" id="btn-tab-localizacao" class="tab-btn active px-6 py-4 text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i class="fa-solid fa-map-location-dot"></i> Localização
+                </button>
+                <button onclick="switchTab('tab-earth')" id="btn-tab-earth" class="tab-btn px-6 py-4 text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i class="fa-solid fa-earth-americas"></i> Visão Google Earth
+                </button>
+                <button onclick="switchTab('tab-video')" id="btn-tab-video" class="tab-btn px-6 py-4 text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i class="fa-solid fa-circle-play"></i> Vídeo Apresentação
+                </button>
+                <button onclick="switchTab('tab-simulacao')" id="btn-tab-simulacao" class="tab-btn px-6 py-4 text-sm font-medium text-slate-600 hover:text-blue-600 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i class="fa-solid fa-chart-line text-emerald-600"></i> Simulação Investidor
+                </button>
+            </div>
+
+            <!-- Conteúdo das Abas -->
+            <div class="p-6">
+
+                <!-- ABA 1: LOCALIZAÇÃO -->
+                <div id="tab-localizacao" class="tab-content block">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-blue-600"></i> Mapa de Localização
+                    </h3>
+                    <div class="w-full h-96 rounded-xl overflow-hidden border border-slate-200 shadow-inner">
+                        <iframe 
+                            class="w-full h-full border-0" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.8951234567!2d-42.100000!3d-22.840000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9710f443b81eb7%3A0x6b84000000000000!2sS%C3%A3o%20Pedro%20da%20Aldeia%2C%20RJ!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
-                <div class="step-card">
-                    <div class="step-title">4. Apuração de Venda</div>
-                    <div class="step-val">R$ 2.500,00 Bruto</div>
-                    <div class="step-desc">Lote liquidado por R$ 250k. Desconto de 1,5% adm e impostos.</div>
+
+                <!-- ABA 2: VISÃO GOOGLE EARTH -->
+                <div id="tab-earth" class="tab-content hidden">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-globe text-blue-600"></i> Vista Satélite & Topografia
+                    </h3>
+                    <div class="w-full h-96 rounded-xl overflow-hidden border border-slate-200 bg-slate-900 flex flex-col items-center justify-center text-white p-6 relative">
+                        <i class="fa-solid fa-satellite text-5xl text-blue-400 mb-3 animate-pulse"></i>
+                        <p class="font-semibold">Navegação Interativa Google Earth</p>
+                        <p class="text-xs text-slate-400 text-center max-w-md mt-1">
+                            Carregando imagens de satélite do Loteamento Blue Garden Ecoville em São Pedro da Aldeia.
+                        </p>
+                        <a href="https://earth.google.com/web/" target="_blank" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-xs font-semibold rounded-lg transition-colors">
+                            Abrir no Google Earth 3D <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="step-card">
-                    <div class="step-title">5. Resgate do Lucro</div>
-                    <div class="step-val">R$ 2.203,25 Líquido</div>
-                    <div class="step-desc">Recebe o retorno do capital investido + 46,88% de lucro líquido.</div>
+
+                <!-- ABA 3: VÍDEO -->
+                <div id="tab-video" class="tab-content hidden">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-film text-blue-600"></i> Apresentação do Terreno
+                    </h3>
+                    <div class="w-full h-96 rounded-xl overflow-hidden border border-slate-200 bg-black flex items-center justify-center relative">
+                        <div class="text-center text-white p-6">
+                            <i class="fa-solid fa-circle-play text-6xl text-blue-500 hover:text-blue-400 cursor-pointer transition-transform hover:scale-110"></i>
+                            <p class="mt-4 text-sm font-medium">Assistir ao Tour Virtual no Condomínio</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- ABA 4: SIMULAÇÃO INVESTIDOR (NOVA) -->
+                <div id="tab-simulacao" class="tab-content hidden">
+                    
+                    <!-- Seletor de Cenários -->
+                    <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-base">Simulador de Retorno do Investidor</h4>
+                            <p class="text-xs text-slate-500">Aporte inicial de R$ 1.500,00 por cota (1/100) • Ciclo de 3 anos</p>
+                        </div>
+                        <div class="flex bg-slate-200 p-1 rounded-lg gap-1 w-full sm:w-auto">
+                            <button onclick="setScenario('pessimista')" id="btn-pessimista" class="scenario-btn active flex-1 sm:flex-none px-4 py-2 rounded-md text-xs font-bold transition-all">
+                                📉 Pessimista (R$ 200k)
+                            </button>
+                            <button onclick="setScenario('otimista')" id="btn-otimista" class="scenario-btn flex-1 sm:flex-none px-4 py-2 rounded-md text-xs font-bold transition-all">
+                                🚀 Otimista (R$ 300k)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cards Resumo das Métricas -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Aporte Inicial</span>
+                            <div class="text-2xl font-extrabold text-slate-800 mt-1">R$ 1.500,00</div>
+                            <span class="text-xs text-slate-500">1 Cota (Valoração R$ 150k)</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
+                            <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Resgate Líquido Estimado</span>
+                            <div id="metric-resgate" class="text-2xl font-extrabold text-emerald-700 mt-1">R$ 1.808,40</div>
+                            <span class="text-xs text-emerald-600 font-medium">Isento de Imposto de Renda</span>
+                        </div>
+                        <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl">
+                            <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wide">Rentabilidade Líquida Total</span>
+                            <div id="metric-rentabilidade" class="text-2xl font-extrabold text-indigo-700 mt-1">+ 20,56%</div>
+                            <span id="metric-cagr" class="text-xs text-indigo-600 font-medium">Média Composta: 6,43% a.a.</span>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Detalhamento de Extrato e Descontos -->
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden mb-6">
+                        <div class="bg-slate-800 text-white px-4 py-3 text-sm font-bold flex justify-between items-center">
+                            <span><i class="fa-solid fa-receipt mr-2"></i> Extrato Detalhado do Investidor (1 Cota)</span>
+                            <span id="label-cenario-tag" class="text-xs bg-amber-500 text-slate-900 px-2 py-0.5 rounded font-extrabold">Cenário Pessimista</span>
+                        </div>
+                        <div class="p-4 overflow-x-auto">
+                            <table class="w-full text-sm text-left">
+                                <thead class="text-xs text-slate-500 bg-slate-50 uppercase border-b">
+                                    <tr>
+                                        <th class="py-3 px-4">Item / Encargo Operacional</th>
+                                        <th class="py-3 px-4">% / Regra</th>
+                                        <th class="py-3 px-4 text-right">Valor por Cota</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td class="py-3 px-4 font-semibold text-slate-800">Aporte Inicial de Entrada</td>
+                                        <td class="py-3 px-4 text-slate-500">Valoração inicial (R$ 150k)</td>
+                                        <td class="py-3 px-4 text-right font-semibold">R$ 1.500,00</td>
+                                    </tr>
+                                    <tr class="bg-slate-50/50">
+                                        <td class="py-3 px-4 font-bold text-slate-900">Valor Bruto na Revenda (1/100)</td>
+                                        <td id="table-regra-venda" class="py-3 px-4 text-slate-500">1% de R$ 200.000,00</td>
+                                        <td id="table-valor-bruto" class="py-3 px-4 text-right font-bold text-slate-900">R$ 2.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 text-red-600 flex items-center gap-1">
+                                            <i class="fa-solid fa-minus text-xs"></i> Taxa de Adm (Holding)
+                                        </td>
+                                        <td class="py-3 px-4 text-slate-500">1,50% sobre Venda Bruta</td>
+                                        <td id="table-desconto-adm" class="py-3 px-4 text-right text-red-600 font-medium">- R$ 30,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 text-red-600 flex items-center gap-1">
+                                            <i class="fa-solid fa-minus text-xs"></i> Impostos Federais (SPE)
+                                        </td>
+                                        <td class="py-3 px-4 text-slate-500">~6,73% tributação retida na fonte</td>
+                                        <td id="table-desconto-imposto" class="py-3 px-4 text-right text-red-600 font-medium">- R$ 134,60</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 text-red-600 flex items-center gap-1">
+                                            <i class="fa-solid fa-minus text-xs"></i> Custos de Manutenção SPE
+                                        </td>
+                                        <td class="py-3 px-4 text-slate-500">IPTU, Incêndio e Taxas (3 Anos)</td>
+                                        <td class="py-3 px-4 text-right text-red-600 font-medium">- R$ 27,00</td>
+                                    </tr>
+                                    <tr class="bg-emerald-50 text-emerald-900 border-t-2 border-emerald-200">
+                                        <td class="py-3 px-4 font-extrabold">(=) Valor Líquido Depositado na Conta</td>
+                                        <td class="py-3 px-4 font-semibold text-emerald-700">Lucro Contábil Isento</td>
+                                        <td id="table-valor-liquido" class="py-3 px-4 text-right font-extrabold text-base text-emerald-700">R$ 1.808,40</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Evolução Ano a Ano -->
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <div class="bg-slate-100 px-4 py-3 border-b border-slate-200 text-sm font-bold text-slate-700">
+                            <i class="fa-solid fa-calendar-days mr-2"></i> Evolução Gradual Proporcional (Ano 1 ao Ano 3)
+                        </div>
+                        <div class="p-4 overflow-x-auto">
+                            <table class="w-full text-sm text-left">
+                                <thead class="text-xs text-slate-500 bg-slate-50 uppercase border-b">
+                                    <tr>
+                                        <th class="py-2.5 px-4">Período</th>
+                                        <th class="py-2.5 px-4">Saldo Estimado da Cota</th>
+                                        <th class="py-2.5 px-4">Lucro do Período</th>
+                                        <th class="py-2.5 px-4 text-right">% Acumulado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-body-evolucao" class="divide-y divide-slate-100">
+                                    <!-- Preenchido dinamicamente via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
-        <!-- FLUXO INTERMEDIÁRIO: SPE / SCP -->
-        <div class="flow-row row-spe">
-            <div class="row-header">
-                🏗️ FLUXO DA SPE / SCP (VEÍCULO DO PROJETO)
-            </div>
-            <div class="steps-container">
-                <div class="step-card">
-                    <div class="step-title">1. Constituição</div>
-                    <div class="step-val">Abertura CNPJ</div>
-                    <div class="step-desc">Registro na JUCERJA. Custos de abertura e certificado e-CNPJ.</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">2. Compra do Lote</div>
-                    <div class="step-val">R$ 50.000,00</div>
-                    <div class="step-desc">Aquisição do lote (12x18m). Pagamento de ITBI, Escritura e RGI.</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">3. Manutenção</div>
-                    <div class="step-val">3 Anos de Custos</div>
-                    <div class="step-desc">Pagamento anual de IPTU e Taxa de Incêndio (CBMERJ).</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">4. Alienação / Revenda</div>
-                    <div class="step-val">R$ 250.000,00</div>
-                    <div class="step-desc">Venda direta finalizada. Recolhimento de tributos (Lucro Presumido).</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">5. Liquidação & Baixa</div>
-                    <div class="step-val">Encerramento SPE</div>
-                    <div class="step-desc">Repasse dos lucros aos cotistas e encerramento jurídico do CNPJ.</div>
-                </div>
-            </div>
-        </div>
+    </main>
 
-        <!-- FLUXO INFERIOR: HOLDING GESTORA -->
-        <div class="flow-row row-holding">
-            <div class="row-header">
-                🏢 FLUXO DA HOLDING / GESTORA (VENDA DIRETA)
-            </div>
-            <div class="steps-container">
-                <div class="step-card">
-                    <div class="step-title">1. Estruturação</div>
-                    <div class="step-val">Modelagem</div>
-                    <div class="step-desc">Criação da tese e precificação de emissão (100 cotas a R$ 1,5k).</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">2. Captação & Legal</div>
-                    <div class="step-val">R$ 150.000,00</div>
-                    <div class="step-desc">Gestão da entrada dos cotistas e emissão dos contratos.</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">3. Gestão Ativa</div>
-                    <div class="step-val">Administração</div>
-                    <div class="step-desc">Gestão contábil, fiscal, jurídica e relacionamento.</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">4. Venda Direta</div>
-                    <div class="step-val">1,5% de Adm</div>
-                    <div class="step-desc">Holding realiza a venda direta de R$ 250k (sem corretagem terceirizada) e cobra taxa de adm.</div>
-                </div>
-                <div class="step-card">
-                    <div class="step-title">5. Sucesso Operacional</div>
-                    <div class="step-val">Reinvestimento</div>
-                    <div class="step-desc">Retenção do resultado e preparação do próximo projeto.</div>
-                </div>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <p>Investimobi © 2026 • Gestão Inteligente de Ativos Imobiliários</p>
+    </footer>
 
-    </div>
+    <!-- Lógica de Navegação e Troca de Cenários -->
+    <script>
+        // Dados dos Cenários para Injeção Dinâmica
+        const scenarios = {
+            pessimista: {
+                tag: "Cenário Pessimista",
+                tagClass: "bg-amber-500 text-slate-900",
+                resgate: "R$ 1.808,40",
+                rentabilidade: "+ 20,56%",
+                cagr: "Média Composta: 6,43% a.a.",
+                regraVenda: "1% de R$ 200.000,00",
+                valorBruto: "R$ 2.000,00",
+                descontoAdm: "- R$ 30,00",
+                descontoImposto: "- R$ 134,60",
+                valorLiquido: "R$ 1.808,40",
+                evolucao: [
+                    { periodo: "Aporte (Dia 1)", saldo: "R$ 1.500,00", lucro: "—", pct: "0,00%" },
+                    { periodo: "Fim do Ano 1", saldo: "R$ 1.596,45", lucro: "+ R$ 96,45", pct: "+ 6,43%" },
+                    { periodo: "Fim do Ano 2", saldo: "R$ 1.699,10", lucro: "+ R$ 102,65", pct: "+ 13,27%" },
+                    { periodo: "Fim do Ano 3 (Resgate)", saldo: "R$ 1.808,40", lucro: "+ R$ 109,30", pct: "+ 20,56%" }
+                ]
+            },
+            otimista: {
+                tag: "Cenário Otimista",
+                tagClass: "bg-emerald-500 text-white",
+                resgate: "R$ 2.726,10",
+                rentabilidade: "+ 81,74%",
+                cagr: "Média Composta: 22,03% a.a.",
+                regraVenda: "1% de R$ 300.000,00",
+                valorBruto: "R$ 3.000,00",
+                descontoAdm: "- R$ 45,00",
+                descontoImposto: "- R$ 201,90",
+                valorLiquido: "R$ 2.726,10",
+                evolucao: [
+                    { periodo: "Aporte (Dia 1)", saldo: "R$ 1.500,00", lucro: "—", pct: "0,00%" },
+                    { periodo: "Fim do Ano 1", saldo: "R$ 1.830,45", lucro: "+ R$ 330,45", pct: "+ 22,03%" },
+                    { periodo: "Fim do Ano 2", saldo: "R$ 2.233,70", lucro: "+ R$ 403,25", pct: "+ 48,91%" },
+                    { periodo: "Fim do Ano 3 (Resgate)", saldo: "R$ 2.726,10", lucro: "+ R$ 492,40", pct: "+ 81,74%" }
+                ]
+            }
+        };
 
+        // Função para alternar entre as 4 Abas
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+
+        // Função para alternar entre os Cenários Pessimista e Otimista
+        function setScenario(type) {
+            document.querySelectorAll('.scenario-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + type).classList.add('active');
+
+            const data = scenarios[type];
+
+            // Atualiza métricas topo
+            document.getElementById('metric-resgate').innerText = data.resgate;
+            document.getElementById('metric-rentabilidade').innerText = data.rentabilidade;
+            document.getElementById('metric-cagr').innerText = data.cagr;
+
+            // Atualiza extrato
+            const tagEl = document.getElementById('label-cenario-tag');
+            tagEl.innerText = data.tag;
+            tagEl.className = "text-xs px-2 py-0.5 rounded font-extrabold " + data.tagClass;
+
+            document.getElementById('table-regra-venda').innerText = data.regraVenda;
+            document.getElementById('table-valor-bruto').innerText = data.valorBruto;
+            document.getElementById('table-desconto-adm').innerText = data.descontoAdm;
+            document.getElementById('table-desconto-imposto').innerText = data.descontoImposto;
+            document.getElementById('table-valor-liquido').innerText = data.valorLiquido;
+
+            // Atualiza Tabela de Evolução
+            const tbody = document.getElementById('table-body-evolucao');
+            tbody.innerHTML = '';
+            data.evolucao.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.className = row.periodo.includes('Resgate') ? 'bg-emerald-50 font-bold' : '';
+                tr.innerHTML = `
+                    <td class="py-2.5 px-4">${row.periodo}</td>
+                    <td class="py-2.5 px-4">${row.saldo}</td>
+                    <td class="py-2.5 px-4 text-emerald-600">${row.lucro}</td>
+                    <td class="py-2.5 px-4 text-right font-bold">${row.pct}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Inicializa o cenário pessimista ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            setScenario('pessimista');
+        });
+    </script>
 </body>
 </html>
