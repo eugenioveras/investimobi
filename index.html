@@ -3,174 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investimobi - Protótipo MVP</title>
+    <title>Fluxo do Empreendimento Imobiliário - SPE & Holding</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
-        body { background-color: #0b1319; color: #e2e8f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        
-        /* Mockup do Celular */
-        .phone-container { width: 375px; height: 780px; background-color: #111c24; border: 10px solid #243442; border-radius: 40px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); overflow: hidden; position: relative; display: flex; flex-direction: column; }
-        .status-bar { height: 30px; background-color: #0b1319; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; font-size: 11pt; color: #a0aec0; flex-shrink: 0; }
-        
-        /* Header Fixo */
-        .app-header { height: 56px; padding: 0 20px; background-color: #111c24; border-bottom: 1px solid #1e2d3b; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
-        .logo-container { width: 140px; height: 32px; display: flex; align-items: center; }
-        .logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-        
-        /* Telas */
-        .screen { flex: 1; overflow-y: auto; padding: 16px; display: none; }
-        .screen.active { display: block !important; }
-        
-        .badge { background-color: rgba(197, 168, 128, 0.15); color: #c5a880; padding: 4px 10px; border-radius: 6px; font-size: 8.5pt; font-weight: 600; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
-        .title { font-size: 14pt; font-weight: 700; margin-bottom: 4px; color: #ffffff; }
-        .subtitle { font-size: 9.5pt; color: #a0aec0; margin-bottom: 16px; }
-        
-        /* Card de Ativos */
-        .project-card { background-color: #1a2630; border-radius: 16px; overflow: hidden; border: 1px solid #243442; cursor: pointer; display: block; text-decoration: none; }
-        .card-image { height: 160px; position: relative; overflow: hidden; background-color: #111c24; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .card-info { padding: 14px; }
-        
-        /* Abas de Navegação Interna */
-        .tab-container { display: grid; grid-template-columns: repeat(3, 1fr); background-color: #0b1319; padding: 4px; border-radius: 8px; margin-bottom: 16px; gap: 4px; }
-        .tab-btn { background: none; border: none; color: #a0aec0; padding: 8px 4px; font-size: 8.5pt; font-weight: 600; border-radius: 6px; cursor: pointer; text-align: center; }
-        .tab-btn.active { background-color: #1a2630; color: #c5a880; }
-        
-        .view-content { display: none; }
-        .view-content.active { display: block !important; }
-        
-        /* Box de Mídias estruturado */
-        .media-box { width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #243442; margin-bottom: 14px; background-color: #1a2630; position: relative; }
-        .media-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .media-box video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
-        
-        .pdf-link-btn { display: flex; align-items: center; justify-content: center; background-color: #1a2630; border: 1px solid #c5a880; color: #c5a880; padding: 12px; border-radius: 8px; text-decoration: none; font-size: 9.5pt; font-weight: 600; margin-top: 10px; text-align: center; }
-        .btn-back { background: none; border: none; color: #c5a880; font-size: 9.5pt; font-weight: 600; cursor: pointer; margin-bottom: 12px; display: inline-flex; align-items: center; }
-        
-        /* Menu Inferior */
-        .nav-bar { height: 55px; background-color: #111c24; border-top: 1px solid #1e2d3b; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; text-align: center; font-size: 8pt; color: #a0aec0; flex-shrink: 0; }
-        .nav-item.active { color: #c5a880; }
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --investor-color: #3b82f6;
+            --spe-color: #10b981;
+            --holding-color: #8b5cf6;
+            --border: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 30px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { font-size: 24px; margin-bottom: 8px; color: #ffffff; text-align: center; }
+        p.subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 30px; text-align: center; }
+
+        .infographic-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .flow-row {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .row-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .row-investor .row-header { color: var(--investor-color); }
+        .row-spe .row-header { color: var(--spe-color); }
+        .row-holding .row-header { color: var(--holding-color); }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            min-width: 900px;
+        }
+
+        .step-card {
+            flex: 1;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .step-card::after {
+            content: '➔';
+            position: absolute;
+            right: -14px;
+            top: 45%;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .step-card:last-child::after { content: ''; }
+
+        .step-title { font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; color: var(--text-muted); }
+        .step-val { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+        .step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
+
+        .row-investor .step-val { color: var(--investor-color); }
+        .row-spe .step-val { color: var(--spe-color); }
+        .row-holding .step-val { color: var(--holding-color); }
     </style>
 </head>
 <body>
 
-    <div class="phone-container">
-        <div class="status-bar"><span>20:29</span><span>5G</span></div>
-        
-        <header class="app-header">
-            <div class="logo-container">
-                <img src="investimobi.jpeg" alt="Investimobi">
+    <h1>Jornada do Empreendimento - São Pedro da Aldeia</h1>
+    <p class="subtitle">Visão sincronizada: Investidor ➔ SPE/SCP ➔ Holding Gestora (Venda Direta)</p>
+
+    <div class="infographic-container">
+
+        <!-- FLUXO SUPERIOR: INVESTIDOR -->
+        <div class="flow-row row-investor">
+            <div class="row-header">
+                👤 FLUXO DO INVESTIDOR (PESSOA FÍSICA)
             </div>
-            <span style="font-size: 12pt; color: #c5a880;">🔒</span>
-        </header>
-
-        <main id="screen-vitrine" class="screen active" style="display: block;">
-            <div class="badge">Oportunidade Real</div>
-            <h1 class="title">Ativos Disponíveis</h1>
-            <p class="subtitle">São Pedro da Aldeia, RJ</p>
-
-            <div class="project-card" onclick="navigateToDetails()">
-                <div class="card-image">
-                    <img src="WhatsApp%20Image%202026-07-01%20at%2020.07.52.jpeg" alt="Capa Eco Resort">
-                    <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(11,19,25,0.9); padding: 4px 8px; border-radius: 4px; font-size: 8pt; border: 1px solid #c5a880; color: #fff;">
-                        📍 Sapiatiba
-                    </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-title">1. Análise de Cotas</div>
+                    <div class="step-val">Valoração R$ 150k</div>
+                    <div class="step-desc">Avalia a oportunidade fracionada em 100 cotas proporcionais.</div>
                 </div>
-                <div class="card-info">
-                    <h3 style="color: #fff; font-size: 11.5pt; font-weight: 700;">Condomínio Eco Resort</h3>
-                    <p style="font-size: 8.5pt; color: #a0aec0; margin-top: 4px; line-height: 1.3;">Projeto completo de desmembramento aprovado pela Leal Porto.</p>
-                    <div style="display: flex; justify-content: space-between; margin-top: 12px; padding-top: 10px; border-top: 1px solid #243442; font-size: 8.5pt;">
-                        <div><span style="color: #a0aec0; font-size: 7.5pt; display:block; margin-bottom: 2px;">RETORNO</span><strong style="color: #4cd137; font-size: 11pt;">22% a 26% a.a.</strong></div>
-                        <div style="text-align: right;"><span style="color: #a0aec0; font-size: 7.5pt; display:block; margin-bottom: 2px;">ÁREA TOTAL</span><strong style="color: #fff; font-size: 11pt;">147.071,31 m²</strong></div>
-                    </div>
+                <div class="step-card">
+                    <div class="step-title">2. Aporte de Capital</div>
+                    <div class="step-val">R$ 1.500,00 / cota</div>
+                    <div class="step-desc">Adquire 1 cota correspondente a 2,16 m² do ativo imobiliário.</div>
                 </div>
-            </div>
-        </main>
-
-        <main id="screen-details" class="screen" style="display: none;">
-            <button class="btn-back" onclick="navigateToVitrine()">⬅️ Voltar para Ativos</button>
-            <h2 class="title" style="font-size: 12pt;">Condomínio Eco Resort</h2>
-            
-            <p class="subtitle" style="margin-bottom: 14px; color: #c5a880; font-weight: 600;">
-                📍 Coordenadas: 22°50'52.2"S 42°10'53.9"W
-            </p>
-
-            <div class="tab-container">
-                <button id="tab-macro" class="tab-btn active" onclick="switchTab('macro')">Localização</button>
-                <button id="tab-satelite" class="tab-btn" onclick="switchTab('satelite')">Vista Satélite</button>
-                <button id="tab-obra" class="tab-btn" onclick="switchTab('obra')">Vídeo Obra</button>
-            </div>
-
-            <div id="content-macro" class="view-content active" style="display: block;">
-                <div class="media-box" style="height: 200px !important;">
-                    <img src="WhatsApp%20Image%202026-07-01%20at%2020.07.52a.jpeg" alt="Mapa Macrorregional">
+                <div class="step-card">
+                    <div class="step-title">3. Maturação (3 Anos)</div>
+                    <div class="step-val">Acompanhamento</div>
+                    <div class="step-desc">Aguarda a valorização da região sem custos de manutenção direta.</div>
                 </div>
-                <p style="font-size: 8.5pt; color: #a0aec0; line-height: 1.4; margin-bottom: 12px;">
-                    Zoneamento estratégico na Região dos Lagos, adjacente à Serra de Sapiatiba, garantindo excelente valorização.
-                </p>
-                <a href="TODOS%20OS%20LOTES_260227_140228.pdf" target="_blank" class="pdf-link-btn">
-                    📄 Abrir Prancha Técnica Completa (PDF)
-                </a>
-            </div>
-
-            <div id="content-satelite" class="view-content" style="display: none;">
-                <div class="media-box" style="height: 200px !important;">
-                    <img src="WhatsApp%20Image%202026-07-01%20at%2020.07.55b.jpeg" alt="Demarcação Satélite">
+                <div class="step-card">
+                    <div class="step-title">4. Apuração de Venda</div>
+                    <div class="step-val">R$ 2.500,00 Bruto</div>
+                    <div class="step-desc">Lote liquidado por R$ 250k. Desconto de 1,5% adm e impostos.</div>
                 </div>
-                <div style="font-size: 8.5pt; background-color: #1a2630; padding: 12px; border-radius: 8px; border-left: 3px solid #c5a880; line-height: 1.4;">
-                    <strong style="color: #fff; display: block; margin-bottom: 4px;">Área do Polígono Técnico:</strong>
-                    Gleba total de 147.071,31 m² fazendo frente com a Rua Deocracio Avelino.
+                <div class="step-card">
+                    <div class="step-title">5. Resgate do Lucro</div>
+                    <div class="step-val">R$ 2.203,25 Líquido</div>
+                    <div class="step-desc">Recebe o retorno do capital investido + 46,88% de lucro líquido.</div>
                 </div>
             </div>
+        </div>
 
-            <div id="content-obra" class="view-content" style="display: none;">
-                <div class="media-box" style="height: 340px !important;">
-                    <video controls autoplay loop muted playsinline style="width: 100%; height: 100%;">
-                        <source src="WhatsApp%20Video%202026-07-01%20at%2020.07.52.mp4" type="video/mp4">
-                    </video>
+        <!-- FLUXO INTERMEDIÁRIO: SPE / SCP -->
+        <div class="flow-row row-spe">
+            <div class="row-header">
+                🏗️ FLUXO DA SPE / SCP (VEÍCULO DO PROJETO)
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-title">1. Constituição</div>
+                    <div class="step-val">Abertura CNPJ</div>
+                    <div class="step-desc">Registro na JUCERJA. Custos de abertura e certificado e-CNPJ.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">2. Compra do Lote</div>
+                    <div class="step-val">R$ 50.000,00</div>
+                    <div class="step-desc">Aquisição do lote (12x18m). Pagamento de ITBI, Escritura e RGI.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">3. Manutenção</div>
+                    <div class="step-val">3 Anos de Custos</div>
+                    <div class="step-desc">Pagamento anual de IPTU e Taxa de Incêndio (CBMERJ).</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">4. Alienação / Revenda</div>
+                    <div class="step-val">R$ 250.000,00</div>
+                    <div class="step-desc">Venda direta finalizada. Recolhimento de tributos (Lucro Presumido).</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">5. Liquidação & Baixa</div>
+                    <div class="step-val">Encerramento SPE</div>
+                    <div class="step-desc">Repasse dos lucros aos cotistas e encerramento jurídico do CNPJ.</div>
                 </div>
             </div>
-        </main>
+        </div>
 
-        <nav class="nav-bar">
-            <div class="nav-item active" style="cursor:pointer;" onclick="navigateToVitrine()">📈 Projetos</div>
-            <div class="nav-item">💼 Carteira</div>
-            <div class="nav-item">📝 Contratos</div>
-            <div class="nav-item">👤 Conta</div>
-        </nav>
+        <!-- FLUXO INFERIOR: HOLDING GESTORA -->
+        <div class="flow-row row-holding">
+            <div class="row-header">
+                🏢 FLUXO DA HOLDING / GESTORA (VENDA DIRETA)
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-title">1. Estruturação</div>
+                    <div class="step-val">Modelagem</div>
+                    <div class="step-desc">Criação da tese e precificação de emissão (100 cotas a R$ 1,5k).</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">2. Captação & Legal</div>
+                    <div class="step-val">R$ 150.000,00</div>
+                    <div class="step-desc">Gestão da entrada dos cotistas e emissão dos contratos.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">3. Gestão Ativa</div>
+                    <div class="step-val">Administração</div>
+                    <div class="step-desc">Gestão contábil, fiscal, jurídica e relacionamento.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">4. Venda Direta</div>
+                    <div class="step-val">1,5% de Adm</div>
+                    <div class="step-desc">Holding realiza a venda direta de R$ 250k (sem corretagem terceirizada) e cobra taxa de adm.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-title">5. Sucesso Operacional</div>
+                    <div class="step-val">Reinvestimento</div>
+                    <div class="step-desc">Retenção do resultado e preparação do próximo projeto.</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <script>
-        function navigateToDetails() {
-            document.getElementById('screen-vitrine').style.setProperty('display', 'none', 'important');
-            document.getElementById('screen-details').style.setProperty('display', 'block', 'important');
-        }
-
-        function navigateToVitrine() {
-            document.getElementById('screen-details').style.setProperty('display', 'none', 'important');
-            document.getElementById('screen-vitrine').style.setProperty('display', 'block', 'important');
-        }
-
-        function switchTab(tabName) {
-            document.getElementById('content-macro').style.setProperty('display', 'none', 'important');
-            document.getElementById('content-satelite').style.setProperty('display', 'none', 'important');
-            document.getElementById('content-obra').style.setProperty('display', 'none', 'important');
-            
-            document.getElementById('tab-macro').classList.remove('active');
-            document.getElementById('tab-satelite').classList.remove('active');
-            document.getElementById('tab-obra').classList.remove('active');
-            
-            if (tabName === 'macro') {
-                document.getElementById('content-macro').style.setProperty('display', 'block', 'important');
-                document.getElementById('tab-macro').classList.add('active');
-            } else if (tabName === 'satelite') {
-                document.getElementById('content-satelite').style.setProperty('display', 'block', 'important');
-                document.getElementById('tab-satelite').classList.add('active');
-            } else if (tabName === 'obra') {
-                document.getElementById('content-obra').style.setProperty('display', 'block', 'important');
-                document.getElementById('tab-obra').classList.add('active');
-            }
-        }
-    </script>
 </body>
 </html>
